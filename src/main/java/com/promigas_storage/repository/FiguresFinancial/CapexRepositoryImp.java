@@ -13,7 +13,6 @@ import java.util.List;
 public class CapexRepositoryImp extends AbstractRepositoryDatabase implements CapexRepository{
 
     private static String QUERY = "";
-
     private static String INSERT = "insert into dbo.cf_capex values(?,?,?,?)";
     private static String DELETE = "delete from dbo.cf_capex where id_opportunity = ?";
 

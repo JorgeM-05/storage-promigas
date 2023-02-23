@@ -14,7 +14,6 @@ import java.util.List;
 public class EbitdaRepositoryImp extends AbstractRepositoryDatabase implements EbitdaRepository{
 
     private static String QUERY = "";
-
     private static String INSERT = "insert into dbo.cf_capex values(?,?,?,?)";
     private static String DELETE = "select * from dbo.cf_ebitda where id_opportunity = ?";
 

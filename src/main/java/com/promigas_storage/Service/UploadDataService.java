@@ -6,6 +6,7 @@ import com.promigas_storage.entity.SecretAdapter;
 import com.promigas_storage.entity.StorageEntity;
 import com.promigas_storage.repository.*;
 
+import java.io.InputStream;
 import java.util.List;
 
 public class UploadDataService extends AbstractRepositoryDatabase {
@@ -14,8 +15,15 @@ public class UploadDataService extends AbstractRepositoryDatabase {
     private SectorRepository repositorySector = new SectorRepositoryImp();
     private TypeContractRepository repositoryContract = new TypeContractRepositoryImp();
     private OpportunitiesRepository repositoryOpportunity = new OpportunityRepositoryImp();
-
     private UploadFinancialService financialService;
+
+//    // inyeccion interfaz
+//    private IUploadService UIUploadService;
+//    // nueva clase para utilizar la interfaz
+//    public List<StorageEntity> reader(InputStream document){
+//        List<StorageEntity> list = UIUploadService.getCustomersDataFromExcel(document);
+//        return list;
+//    }
     public void DataService(List<StorageEntity> customersDataFromExcel){
         SecretPort secretPort = new SecretAdapter();
         ConnectionInfo connectionInfo = secretPort.querySecretConnection(ConstantsEnum.SECRET_SQL_SERVER.getValue());
@@ -46,7 +54,6 @@ public class UploadDataService extends AbstractRepositoryDatabase {
                 idOpportunity = repositoryOpportunity.insertByOpportunitiy(idSector,idCountry,idTypeContract,
                         data.getOpportunityEntity(),connectionInfo);
                 financialService.setDataFinancial(idOpportunity,data);
-
             }
             else {
                 repositoryOpportunity.updateOpportunity(idOpportunity,idSector,idCountry,idTypeContract,data.getOpportunityEntity(),connectionInfo);
