@@ -2,10 +2,8 @@ package com.promigas_storage;
 
 import com.microsoft.azure.functions.ExecutionContext;
 import com.microsoft.azure.functions.annotation.*;
-import com.promigas_storage.Service.IUploadService;
 import com.promigas_storage.Service.UploadDataService;
 import com.promigas_storage.Service.UploadService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
