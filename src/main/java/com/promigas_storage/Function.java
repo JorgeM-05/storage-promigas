@@ -12,7 +12,6 @@ import java.io.InputStream;
  * Azure Functions with HTTP Trigger.
  */
 public class Function {
-
     @FunctionName("info-processor")
     public void blobProcessor(
             @BlobTrigger(name = "blobProcessor",
@@ -26,12 +25,10 @@ public class Function {
         if(filename.equals("data.xlsx")) {
             System.out.println("Storga......." + filename);
             UploadDataService uploadData = new UploadDataService();
-            uploadData.DataService(null);
-
-
-            UploadService uploadService = new UploadService();
-            uploadService.getCustomersDataFromExcel(document);
-//            uploadService.getCustomersDataFromExcel(document);
+            if (filename.equals("data.xlsx")) {
+                UploadService uploadService = new UploadService();
+                uploadData.DataService(uploadService.getCustomersDataFromExcel(document));
+            }
         }
     }
 }

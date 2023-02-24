@@ -37,8 +37,8 @@ public class TirProjectRepositorylmp extends AbstractRepositoryDatabase implemen
             PreparedStatement con = connection.prepareStatement(INSERT);
             con.setInt(1,idOpportunity);
             con.setString(2,tirProjectEntity.getYear());
-            con.setDouble(3,tirProjectEntity.getTirprojectunit());
-            con.setDouble(4,tirProjectEntity.getCapexCop());
+//            con.setDouble(3,tirProjectEntity.getTirprojectunit());
+//            con.setDouble(4,tirProjectEntity.getTirprojfigure());
 
             int affectedRows =con.executeUpdate();
             if(affectedRows!=0)

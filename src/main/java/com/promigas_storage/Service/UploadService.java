@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,6 +26,7 @@ public class UploadService {
      * @return List<StorageDto> lista de registros
      */
     public List<StorageEntity> getCustomersDataFromExcel(InputStream inputStream) {
+        System.out.println(">>>>>>>>>>>");
         List<StorageEntity> storages = new ArrayList<>();
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
@@ -46,7 +48,7 @@ public class UploadService {
                             storage.getCountryEntity().setNameContry(convertString(cell));
                             break;
                         case 1:
-                            storage.getOpportunityEntity().setTypeProject(convertString(cell));
+                            storage.getOpportunityEntity().setTypeProject(convertString(cell).toUpperCase());
                             break;
                         case 2:
                             storage.getOpportunityEntity().setProjecTitle(convertString(cell));
@@ -59,7 +61,7 @@ public class UploadService {
                             break;
                         case 5:
                             storage.getOpportunityEntity()
-                                    .setUbicGeograf(convertString(cell));
+                                    .setCoordinates(convertString(cell));
                             break;
                         case 6:
                             storage.getOpportunityEntity().setDescrip(convertString(cell));
@@ -76,6 +78,9 @@ public class UploadService {
                                     (int) Double.parseDouble(convertString(cell)));
                             break;
                         case 10:
+                            String[] arrOfStr = String.valueOf(cell).split("-");
+                            String[] arr = arrOfStr[1].split("\\.");
+                            cell.setCellValue(arr[0]+"-"+arrOfStr[2]);
                             storage.getOpportunityEntity().setPoc(convertString(cell));
                             break;
                         case 11:
@@ -85,10 +90,13 @@ public class UploadService {
                             storage.getOpportunityEntity().setTrmFin(Float.parseFloat(convertString(cell)));
                             break;
                         case 13:
-                            storage.getOpportunityEntity()
-                                    .setPropCapexUsd(convertString(cell));
+                            double v = Double.parseDouble(String.valueOf(cell)) * 100;
+                            cell.setCellValue(Math.ceil(v) +"%");
+                            storage.getOpportunityEntity().setPropCapexUsd(convertString(cell));
                             break;
                         case 14:
+                            double c = Double.parseDouble(String.valueOf(cell)) * 100;
+                            cell.setCellValue(Math.ceil(c) +"%");
                             storage.getOpportunityEntity()
                                     .setPropCapexCop(convertString(cell));
                             break;
@@ -112,14 +120,15 @@ public class UploadService {
                             break;
                         case 19:
                             storage.getOpportunityEntity()
-                                    .setFinancilAsset(validatesTrue(cell.getStringCellValue()));
+                                    .setFinancialAsset(validatesTrue(cell.getStringCellValue()));
                             break;
                         case 20:
                             storage.getCapexEntity().setYear(convertString(cell));
                             break;
                             // Moneda por validar
                         case 21:
-                            storage.getOpportunityEntity().setCity(convertString(cell));
+                            storage.getCountryEntity().setCod_country(convertString(cell));
+//                            storage.getOpportunityEntity().setCity(convertString(cell));
                             break;
                         case 22:
                             storage.getCapexEntity().setCapexUsd(Double.parseDouble(convertString(cell)));
@@ -238,11 +247,15 @@ public class UploadService {
                             storage.getDistributionEntity()
                                     .setDistributionPenetration(Float.parseFloat(convertString(cell)));
                             break;
+                        default:
+                            break;
                     }
                     cellIndex++;
                 }
                 storages.add(storage);
             }
+            System.out.println(">>>>>>>>>>>>> DSFDSSDFFDFD ><<<<<<<<<<<<<<<");
+
         } catch (IOException e) {
             e.getStackTrace();
         }
