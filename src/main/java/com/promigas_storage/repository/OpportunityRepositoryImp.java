@@ -86,7 +86,11 @@ public class OpportunityRepositoryImp extends AbstractRepositoryDatabase impleme
             con.setInt(3,idcontract);
             con.setString(4,opportunitiesEntity.getTypeProject());
             con.setString(5,opportunitiesEntity.getProjecTitle());
-            con.setDate(6, java.sql.Date.valueOf(opportunitiesEntity.getDate()));
+//            System.out.println(">>>>>>>>>>> "+java.sql.Date.valueOf("2022-02-03"));
+//            System.out.println(">>>>>>>>>>> op:date "+opportunitiesEntity.getDate());
+//            System.out.println(">>>>>>>>>>> 1"+java.sql.Date.valueOf(opportunitiesEntity.getDate()));
+//            con.setDate(6, java.sql.Date.valueOf(opportunitiesEntity.getDate()));
+            con.setDate(6, java.sql.Date.valueOf("2024-02-24"));
             con.setString(7,opportunitiesEntity.getCoordinates());
             con.setString(8,opportunitiesEntity.getDescrip());
             con.setInt(9,opportunitiesEntity.getHorizonOpe());
@@ -99,7 +103,6 @@ public class OpportunityRepositoryImp extends AbstractRepositoryDatabase impleme
             con.setBoolean(16, opportunitiesEntity.isFinancialAsset());
             con.setString(17, opportunitiesEntity.getCity());
             con.setInt(18,id);
-            System.out.println("bd 2");
 
 
             int affectedRows =con.executeUpdate();

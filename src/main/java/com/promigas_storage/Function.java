@@ -27,6 +27,7 @@ public class Function {
             UploadDataService uploadData = new UploadDataService();
             if (filename.equals("data.xlsx")) {
                 UploadService uploadService = new UploadService();
+//                uploadService.getCustomersDataFromExcel(document);
                 uploadData.DataService(uploadService.getCustomersDataFromExcel(document));
             }
         }

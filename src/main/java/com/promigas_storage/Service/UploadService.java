@@ -57,6 +57,9 @@ public class UploadService {
                             storage.getSectorEntity().setTypeSector(convertString(cell));
                             break;
                         case 4:
+                            String[] arrOfStr2 = String.valueOf(cell).split("-");
+                            String[] array = arrOfStr2[1].split("\\.");
+                            cell.setCellValue(arrOfStr2[2]+"-"+array[0]+"-"+arrOfStr2[1]);
                             storage.getOpportunityEntity().setDate(convertString(cell));
                             break;
                         case 5:
@@ -247,15 +250,15 @@ public class UploadService {
                             storage.getDistributionEntity()
                                     .setDistributionPenetration(Float.parseFloat(convertString(cell)));
                             break;
-                        default:
+                        case 64:
+                            storage.getOpportunityEntity()
+                                    .setCity(convertString(cell));
                             break;
                     }
                     cellIndex++;
                 }
                 storages.add(storage);
             }
-            System.out.println(">>>>>>>>>>>>> DSFDSSDFFDFD ><<<<<<<<<<<<<<<");
-
         } catch (IOException e) {
             e.getStackTrace();
         }
