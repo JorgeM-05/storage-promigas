@@ -6,10 +6,7 @@ import com.promigas_storage.entity.FiguresFinancial.CapexEntity;
 import com.promigas_storage.entity.FiguresFinancial.EbitdaEntity;
 import com.promigas_storage.entity.SecretAdapter;
 import com.promigas_storage.entity.StorageEntity;
-import com.promigas_storage.repository.FiguresFinancial.CapexRepository;
-import com.promigas_storage.repository.FiguresFinancial.CapexRepositoryImp;
-import com.promigas_storage.repository.FiguresFinancial.EbitdaRepository;
-import com.promigas_storage.repository.FiguresFinancial.EbitdaRepositoryImp;
+import com.promigas_storage.repository.FiguresFinancial.*;
 import com.promigas_storage.repository.SecretPort;
 
 import java.util.List;
@@ -17,6 +14,14 @@ import java.util.List;
 public class UploadFinancialService {
     private CapexRepository capexRepository = new CapexRepositoryImp();
     private EbitdaRepository ebitdaRepository = new EbitdaRepositoryImp();
+    private DividensRepository dividensRepository = new DividensRepositorylmp();
+    private FclRepository fclRepository = new FclRepositorylmp();
+    private FclShareholderRepository fclShRepository = new FclShareholderlmp();
+    private IncomeRepository incomeRepository = new IncomeRepositorylmp();
+    private TarifRepository tarifRepository = new TarifRepositorylmp();
+    private TirProjectRepository tirProjectRepository = new TirProjectRepositorylmp();
+    private UtilityRepository utilityRepository = new UtilityRepositorylmp();
+    
     public void setDataFinancial(int idOportunity, StorageEntity data){
         SecretPort secretPort = new SecretAdapter();
         ConnectionInfo connectionInfo = secretPort.querySecretConnection(ConstantsEnum.SECRET_SQL_SERVER.getValue());
