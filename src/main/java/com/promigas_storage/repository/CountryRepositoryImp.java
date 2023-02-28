@@ -10,6 +10,9 @@ public class CountryRepositoryImp extends AbstractRepositoryDatabase implements 
 
     private static String QUERY_COUNTRIES = "";
 
+    private static String INSERT = "insert into dbo.country values(?,?,?)";
+
+
     @Override
     public Integer findByCountry(String country, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
@@ -41,7 +44,21 @@ public class CountryRepositoryImp extends AbstractRepositoryDatabase implements 
 
     @Override
     public boolean insertCountry(CountryEntity countryEntity, ConnectionInfo connectionInfo) {
-        return false;
-    }
+        getConnectionSQLServer(connectionInfo);
+        try {
+            PreparedStatement con = connection.prepareStatement(INSERT);
+            con.setString(2,countryEntity.getNameContry());
+            con.setDouble(3,countryEntity.getUrlFlags());
+            con.setDouble(4,countryEntity.getCod_country());
+
+            int affectedRows =con.executeUpdate();
+            if(affectedRows!=0)
+                return true;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }finally {
+            closeConnection();
+        }
+        return false;    }
 
 }
