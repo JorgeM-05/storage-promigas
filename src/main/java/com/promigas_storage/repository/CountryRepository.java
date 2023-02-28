@@ -8,4 +8,6 @@ public interface CountryRepository {
 
     public Integer findByCountry(String country, ConnectionInfo connectionInfo);
     public boolean insertCountry(CountryEntity countryEntity, ConnectionInfo connectionInfo);
+
+
 }
