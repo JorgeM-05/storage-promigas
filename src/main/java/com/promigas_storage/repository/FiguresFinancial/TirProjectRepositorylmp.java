@@ -13,12 +13,12 @@ import java.util.List;
 public class TirProjectRepositorylmp extends AbstractRepositoryDatabase implements TirProjectRepository{
 
     private static String QUERY = "";
+    private static String INSERT = "insert into dbo.cf_tir_project values(?,?,?)";
+    private static String DELETE = "select * from dbo.cf_tir_project where id_opportunity = ?";
 
-    private static String INSERT = "insert into dbo.cf_tir_project values(?,?,?,?)";
-    private static String DELETE = "delete from dbo.cf_tir_project where id_opportunity = ?";
 
     @Override
-    public List<Integer> findByTirProject(int idOportunity, ConnectionInfo connectionInfo) {
+    public List<Integer> findByTirProjectRepository(int idOportunity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
         List<Integer> id= Collections.singletonList(0);
         try {
@@ -28,17 +28,18 @@ public class TirProjectRepositorylmp extends AbstractRepositoryDatabase implemen
         }finally {
             closeConnection();
         }
-        return id;    }
+        return id;
+    }
 
     @Override
-    public boolean insertTirProject(int idOpportunity, TirProjectEntity tirProjectEntity, ConnectionInfo connectionInfo) {
+    public boolean insertTirProjectRepository(int idOpportunity, TirProjectEntity tirProjectEntity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
         try {
             PreparedStatement con = connection.prepareStatement(INSERT);
             con.setInt(1,idOpportunity);
             con.setString(2,tirProjectEntity.getYear());
-//            con.setDouble(3,tirProjectEntity.getTirprojectunit());
-//            con.setDouble(4,tirProjectEntity.getTirprojfigure());
+            con.setDouble(3,tirProjectEntity.getTirprojfigure());
+            con.setDouble(4,tirProjectEntity.getTirprojectunit());
 
             int affectedRows =con.executeUpdate();
             if(affectedRows!=0)
@@ -48,10 +49,11 @@ public class TirProjectRepositorylmp extends AbstractRepositoryDatabase implemen
         }finally {
             closeConnection();
         }
-        return false;    }
+        return false;
+    }
 
     @Override
-    public boolean deleteTirProject(int idOpportunity, ConnectionInfo connectionInfo) {
+    public boolean deleteTirProjectRepository(int idOpportunity, ConnectionInfo connectionInfo) {
         return false;
     }
 
@@ -66,5 +68,4 @@ public class TirProjectRepositorylmp extends AbstractRepositoryDatabase implemen
         }
         return id;
     }
-
 }

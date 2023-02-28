@@ -48,8 +48,8 @@ public class CountryRepositoryImp extends AbstractRepositoryDatabase implements 
         try {
             PreparedStatement con = connection.prepareStatement(INSERT);
             con.setString(2,countryEntity.getNameContry());
-            con.setDouble(3,countryEntity.getUrlFlags());
-            con.setDouble(4,countryEntity.getCod_country());
+            con.setString(3,countryEntity.getUrlFlags());
+            con.setString(4,countryEntity.getCod_country());
 
             int affectedRows =con.executeUpdate();
             if(affectedRows!=0)

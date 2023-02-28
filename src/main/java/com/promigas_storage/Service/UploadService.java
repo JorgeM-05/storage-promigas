@@ -290,11 +290,11 @@ public class UploadService {
                             break;
                         case 65:
                             storage.getCountryEntity()
-                            setcod_country(convertString(cell));
+                                    .setCod_country(convertString(cell));
                             break;
                         case 66:
                             storage.getCountryEntity()
-                                    setUrl_flags(convertString(cell));
+                                    .getUrlFlags(convertString(cell));
                             break;
                     }
                     cellIndex++;
