@@ -15,16 +15,13 @@ public class UploadDataService extends AbstractRepositoryDatabase {
     private SectorRepository repositorySector = new SectorRepositoryImp();
     private TypeContractRepository repositoryContract = new TypeContractRepositoryImp();
     private OpportunitiesRepository repositoryOpportunity = new OpportunityRepositoryImp();
-    private UploadFinancialService financialService;
+    private UploadFinancialService financialService = new UploadFinancialService();
 
     public void DataService(List<StorageEntity> customersDataFromExcel){
         SecretPort secretPort = new SecretAdapter();
         ConnectionInfo connectionInfo = secretPort.querySecretConnection(ConstantsEnum.SECRET_SQL_SERVER.getValue());
 
-        System.out.println("DATA ::: \n "+customersDataFromExcel);
-
         for (StorageEntity data: customersDataFromExcel){
-            System.out.println("DATA ::: \n "+data.getCountryEntity());
             int idCountry = 0;
             if(!data.getCountryEntity().getNameContry().equals("0.0")){
                 idCountry = getCountry(data.getCountryEntity().getNameContry(),connectionInfo);
@@ -46,20 +43,17 @@ public class UploadDataService extends AbstractRepositoryDatabase {
             }
 
             int idOpportunity = getOpportunity(data.getOpportunityEntity().getProjecTitle(),connectionInfo);
-            System.out.println("id opp"+idOpportunity+"  ::: "+data.getOpportunityEntity().getProjecTitle());
-            System.out.println("id coiudad"+data.getOpportunityEntity().getCity());
             if(idOpportunity==0 ){
                 if(idSector>0 && idCountry>0 && idTypeContract>0) {
-                    System.out.println(".............insertando ........ " + idOpportunity);
-
                     idOpportunity = repositoryOpportunity.insertByOpportunitiy(idSector, idCountry, idTypeContract,
                             data.getOpportunityEntity(), connectionInfo);
-                    financialService.setDataFinancial(idOpportunity, data);
+                    if(idOpportunity>0)
+                        financialService.setDataFinancial(idOpportunity, data);
                 }
             }
             else {
-                System.out.println("<<<<<<<<<<<<<<< update >>>>>>>>>>>>>>"+data.getOpportunityEntity().getProjecTitle());
                 repositoryOpportunity.updateOpportunity(idOpportunity,idSector,idCountry,idTypeContract,data.getOpportunityEntity(),connectionInfo);
+                financialService.setDataFinancial(idOpportunity, data);
             }
         }
     }
