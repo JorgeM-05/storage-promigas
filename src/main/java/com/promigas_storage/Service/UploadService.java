@@ -128,7 +128,6 @@ public class UploadService {
                             String[] year = String.valueOf(cell).split("\\.");
                             storage.getCapexEntity().setYear(year[0]);
                             break;
-                            // Moneda por validar
                         case 21:
                             storage.getCountryEntity().setCod_country(convertString(cell));
 //                            storage.getOpportunityEntity().setCity(convertString(cell));
@@ -138,7 +137,6 @@ public class UploadService {
                             break;
                         case 24:
                             storage.getCapexEntity().setCapexCop(Double.parseDouble(convertString(cell)));
-//
                             break;
                         case 25:
                             storage.getEbitdaEntity()
@@ -182,28 +180,20 @@ public class UploadService {
                             storage.getDividensEntity().setDividensCop(Double.parseDouble(convertString(cell)));
                             break;
                         case 38:
-                            System.out.println(">>>>>>>>>>>>>>>>>>>>>>> ><z<zz<z<z< 0"+cell);
-
                             storage.getTarifEntity().setValueTarifUsd(
                                     Double.parseDouble(convertString(cell)));
                             break;
                         case 39:
-                            System.out.println(">>>>>>>>>>>>>>>>>>>>>>> ><z<zz<z<z< 1"+cell);
-
                             storage.getTarifEntity().setValueTarifCop(Double.parseDouble(convertString(cell)));
                             break;
                         case 40:
-                            System.out.println(">>>>>>>>>>>>>>>>>>>>>>> ><z<zz<z<z< 2"+cell);
                             String[] yearEbitda = String.valueOf(cell).split("\\.");
                             storage.getTarifEntity().setYear(yearEbitda[0]);
                             break;
                         case 41:
-                            System.out.println(">>>>>>>>>>>>>>>>>>>>>>> ><z<zz<z<z< 3"+cell);
                             storage.getTirProjectEntity().setTirprojfigure(Double.parseDouble(convertString(cell)));
                             break;
                         case 42:
-                            System.out.println(">>>>>>>>>>>>>>>>>>>>>>> ><z<zz<z<z< 4"+cell);
-
                             storage.getTirEquityEntity().setTirEqFig(Double.parseDouble(convertString(cell)));
                             break;
                         case 43:
