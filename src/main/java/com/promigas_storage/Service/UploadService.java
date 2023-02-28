@@ -135,127 +135,178 @@ public class UploadService {
                         case 22:
                             storage.getCapexEntity().setCapexUsd(Double.parseDouble(convertString(cell)));
                             break;
-                        case 24:
+                        case 23:
                             storage.getCapexEntity().setCapexCop(Double.parseDouble(convertString(cell)));
+                            break;
+                        case 24:
+                            storage.getEbitdaEntity()
+                                    .setValueUsd(Double.parseDouble(convertString(cell)));
+                            System.out.println(">>>>>>>>>>>2");
+
                             break;
                         case 25:
                             storage.getEbitdaEntity()
-                                    .setValueUsd(Double.parseDouble(convertString(cell)));
-                            break;
-                        case 26:
-                            storage.getEbitdaEntity()
                                     .setValueCop(Double.parseDouble(convertString(cell)));
                             break;
-                        case 27:
+                        case 26:
                             storage.getIncomeEntity().setIncomeUsd(Double.parseDouble(convertString(cell)));
                             break;
-                        case 28:
+                        case 27:
                             storage.getIncomeEntity().setIncomeCop(Double.parseDouble(convertString(cell)));
                             break;
-                        case 29:
+                        case 28:
                             storage.getUtilityEntity().setUtilityUsd(Double.parseDouble(convertString(cell)));
                             break;
-                        case 30:
+                        case 29:
                             storage.getUtilityEntity().setUtilityCop(Double.parseDouble(convertString(cell)));
                             break;
-                        case 31:
+                        case 30:
                             storage.getFclEntity().setFclUsd(Double.parseDouble(convertString(cell)));
                             break;
-                        case 32:
+                        case 31:
                             storage.getFclEntity().setFclCop(Double.parseDouble(convertString(cell)));
                             break;
-                        case 33:
+                        case 32:
                             storage.getFclShareholderEntity()
                                     .setShareholderUsd(Double.parseDouble(convertString(cell)));
                             break;
-                        case 34:
+                        case 33:
                             storage.getFclShareholderEntity()
                                     .setShareholderCop(Double.parseDouble(convertString(cell)));
                             break;
-                        case 35:
+                        case 34:
                             storage.getDividensEntity()
                                     .setDividensUsd(Double.parseDouble(convertString(cell)));
                             break;
-                        case 36:
+                        case 35:
                             storage.getDividensEntity().setDividensCop(Double.parseDouble(convertString(cell)));
                             break;
-                        case 38:
+                        case 36:
                             storage.getTarifEntity().setValueTarifUsd(
                                     Double.parseDouble(convertString(cell)));
                             break;
-                        case 39:
+                        case 37:
                             storage.getTarifEntity().setValueTarifCop(Double.parseDouble(convertString(cell)));
                             break;
-                        case 40:
+                        case 38:
                             String[] yearEbitda = String.valueOf(cell).split("\\.");
                             storage.getTarifEntity().setYear(yearEbitda[0]);
                             break;
-                        case 41:
+                        case 39:
                             storage.getTirProjectEntity().setTirprojfigure(Double.parseDouble(convertString(cell)));
+                            System.out.println(">>>>>>>>>>>3");
+
                             break;
-                        case 42:
+
+                    //  tir_project_year
+                    //  tir_project_unit
+                        case 40:
                             storage.getTirEquityEntity().setTirEqFig(Double.parseDouble(convertString(cell)));
                             break;
-                        case 43:
+                        case 41:
                             storage.getTirEquityEntity().setTirEqCapital(convertString(cell));
                             break;
-                        case 44:
+                        case 42:
                             storage.getTirEquityEntity().setTirEqCost(convertString(cell));
                             break;
-                        case 45:
+                    // tir_equity_year
+                    // tir_equity_unit
+                    // tir_equity_amortization
+                        case 43:
                             storage.getEnergySolutionEntity()
                                     .setSolEnergyPowerFigure(Float.parseFloat(convertString(cell)));
                             break;
-                        case 46:
+                        case 44:
                             storage.getEnergySolutionEntity().setSolGenerFigure(
                                     convertString(cell));
                             break;
-                        case 47:
+                        case 45:
                             storage.getEnergySolutionEntity().setSolDegradation(convertString(cell));
                             break;
-                        case 48:
+                        case 46:
                             storage.getEnergySolutionEntity()
                                     .setSolEnergyHourSun(Float.parseFloat(convertString(cell)));
                             break;
-                        case 49:
+                    //solenerg_power_unit
+                    //solenerg_gener_unit
+                        case 47:
                             storage.getTransportEntity()
                                     .setTransportCapacityMax(Float.parseFloat(convertString(cell)));
                             break;
-                        case 50:
+                        case 48:
                             storage.getTransportEntity()
                                     .setTransportCapacityHired(Float.parseFloat(convertString(cell)));
                             break;
-                        case 51:
+                        case 49:
                             storage.getTransportEntity()
                                     .setTransportVolumen(Float.parseFloat(convertString(cell)));
                             break;
-                        case 52:
+                        case 50:
                             storage.getTransportEntity()
                                     .setTransportLengthpipeline(Float.parseFloat(convertString(cell)));
                             break;
-                        case 53:
+                        case 51:
                             storage.getDistributionEntity()
                                     .setVolumeDistribution(Float.parseFloat(convertString(cell)));
                             break;
-                        case 54:
+                        case 52:
+
                             storage.getDistributionEntity()
                                     .setDistributionUsers(Float.parseFloat(convertString(cell)));
+                            System.out.println(">>>>>>>>>>>3.1");
+
                             break;
-                        case 55:
+                        case 53:
                             storage.getDistributionEntity()
                                     .setDistriPeriod(Float.parseFloat(convertString(cell)));
                             break;
-                        case 56:
+                        case 54:
                             storage.getDistributionEntity()
                                     .setDistributionKms(Float.parseFloat(convertString(cell)));
                             break;
-                        case 57:
+                        case 55:
+
                             storage.getDistributionEntity()
                                     .setDistributionPenetration(Float.parseFloat(convertString(cell)));
+                            System.out.println(">>>>>>>>>>>4");
+                            break;
+                        case 56:
+                            // indicadores_deuda_usd
+                            System.out.println("case 56");
+                            break;
+                    // indicadores_deuda_cop
+                        case 57:
+                            break;
+                    // deuda_neta_usd
+                        case 58:
+                            break;
+                    // deuda_neta_cop
+                        case 59:
+                            break;
+                    // indicador_ebitda_usd
+                        case 60:
+                            break;
+                    // indicador_ebitda_cop
+                        case 61:
+                            break;
+                    //FFO_usd
+                        case 62:
+                            break;
+                    //FFO_cop
+                        case 63:
                             break;
                         case 64:
+                            System.out.println(">>>>>>>>>>>5");
                             storage.getOpportunityEntity()
                                     .setCity(convertString(cell));
+                            System.out.println(">>>>>>>>>>>5");
+                            break;
+                        case 65:
+                            storage.getCountryEntity().setCod_country(convertString(cell));
+                            break;
+                        case 66:
+                            storage.getCountryEntity()
+                                    .setUrlFlags(convertString(cell));
                             break;
                     }
                     cellIndex++;

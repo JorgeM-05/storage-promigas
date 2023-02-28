@@ -39,7 +39,7 @@ public class TransportRepositorylmp extends AbstractRepositoryDatabase implement
         try {
             PreparedStatement con = connection.prepareStatement(INSERT);
             con.setInt(1,idOpportunity);
-            con.setString(2,transportEntity.getTransportCapacityMax());
+            con.setDouble(2,transportEntity.getTransportCapacityMax());
             con.setDouble(3,transportEntity.getTransportCapacityHired());
             con.setDouble(4,transportEntity.getTransportVolumen());
             con.setDouble(4,transportEntity.getTransportLengthpipeline());
