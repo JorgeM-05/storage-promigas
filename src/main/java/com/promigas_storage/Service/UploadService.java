@@ -285,14 +285,16 @@ public class UploadService {
                         case 63:
                             break;
                         case 64:
-                            storage.getCountryEntity()
-                                    setUrl_flags(convertString(cell));
-                        case 65:
-                            storage.getCountryEntity()
-                                    setcod_country(convertString(cell));
-                        case 66:
                             storage.getOpportunityEntity()
                                     .setCity(convertString(cell));
+                            break;
+                        case 65:
+                            storage.getCountryEntity()
+                            setcod_country(convertString(cell));
+                            break;
+                        case 66:
+                            storage.getCountryEntity()
+                                    setUrl_flags(convertString(cell));
                             break;
                     }
                     cellIndex++;
