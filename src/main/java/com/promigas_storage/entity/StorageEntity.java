@@ -11,7 +11,7 @@ import lombok.Data;
 public class StorageEntity {
 
   private BenefTributariesEntity benefTributariesEntity;
-  private CountryEntity countryeEntity;
+  private CountryEntity countryEntity;
   private OpportunitiesEntity opportunityEntity;
   private SectorEntity sectorEntity;
   private TypeContractEntity typeContractEntity;

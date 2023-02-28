@@ -38,7 +38,7 @@ public class DistributionRepositorylmp extends AbstractRepositoryDatabase implem
         try {
             PreparedStatement con = connection.prepareStatement(INSERT);
             con.setInt(1, idOpportunity);
-            con.setString(2, distributionEntity.getVolumeDistribution());
+            con.setDouble(2, distributionEntity.getVolumeDistribution());
             con.setDouble(3, distributionEntity.getDistriPeriod());
             con.setDouble(4, distributionEntity.getDistributionKms());
             con.setDouble(3, distributionEntity.getDistributionUsers());

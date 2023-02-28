@@ -14,8 +14,7 @@ import java.util.List;
 public class EbitdaRepositoryImp extends AbstractRepositoryDatabase implements EbitdaRepository{
 
     private static String QUERY = "";
-
-    private static String INSERT = "insert into dbo.cf_capex values(?,?,?,?)";
+    private static String INSERT = "insert into dbo.cf_ebitda values(?,?,?,?)";
     private static String DELETE = "select * from dbo.cf_ebitda where id_opportunity = ?";
 
     @Override
@@ -72,7 +71,7 @@ public class EbitdaRepositoryImp extends AbstractRepositoryDatabase implements E
     }
     public List<Integer> getID(int idOportunity) throws SQLException {
         List<Integer> id= Collections.singletonList(0);
-        QUERY = "select * from dbo.cf_capex where id_opportunity = "+idOportunity;
+        QUERY = "select * from dbo.cf_ebitda where id_opportunity = "+idOportunity;
         PreparedStatement con = connection.prepareStatement(QUERY);
         ResultSet rs = con.executeQuery();
 

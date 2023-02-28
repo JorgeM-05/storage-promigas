@@ -22,7 +22,6 @@ public class OpportunitiesEntity {
     private float trmFin;
     private String propCapexUsd;
     private String propCapexCop;
-    private boolean financilAsset;
+    private boolean financialAsset;
     private String codCountry;
-    private String ubicGeograf;
 }

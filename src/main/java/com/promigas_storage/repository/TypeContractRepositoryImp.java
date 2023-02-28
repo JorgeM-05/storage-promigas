@@ -5,13 +5,17 @@ import com.promigas_storage.DTO.ConnectionInfo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 public class TypeContractRepositoryImp extends AbstractRepositoryDatabase implements  TypeContractRepository{
+
+    Logger logger = Logger.getLogger(TypeContractRepositoryImp.class.getName());
     private static String QUERY = "";
     private static String INSERT = "insert into dbo.type_contract(type_contract) values(?)";
 
     @Override
     public Integer findByContract(String nameContract, ConnectionInfo connectionInfo) {
+        logger.info("buscando type contract ::"+ nameContract);
         getConnectionSQLServer(connectionInfo);
         int id= 0;
         try {
@@ -26,6 +30,8 @@ public class TypeContractRepositoryImp extends AbstractRepositoryDatabase implem
 
     @Override
     public Integer insertByContract(String nameContract, ConnectionInfo connectionInfo) {
+        logger.info("insertando en DB type contract ::"+ nameContract);
+
         getConnectionSQLServer(connectionInfo);
         int id= 0;
         try {
