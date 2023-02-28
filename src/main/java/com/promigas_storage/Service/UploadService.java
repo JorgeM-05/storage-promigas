@@ -129,8 +129,7 @@ public class UploadService {
                             storage.getCapexEntity().setYear(year[0]);
                             break;
                         case 21:
-                            storage.getCountryEntity().setCod_country(convertString(cell));
-//                            storage.getOpportunityEntity().setCity(convertString(cell));
+                            System.out.println(">>>>>>>>>>>moneda");
                             break;
                         case 22:
                             storage.getCapexEntity().setCapexUsd(Double.parseDouble(convertString(cell)));
@@ -294,7 +293,7 @@ public class UploadService {
                             break;
                         case 66:
                             storage.getCountryEntity()
-                                    .getUrlFlags(convertString(cell));
+                                    .setUrlFlags(convertString(cell));
                             break;
                     }
                     cellIndex++;
