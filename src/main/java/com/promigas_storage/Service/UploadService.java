@@ -316,7 +316,7 @@ public class UploadService {
         } catch (IOException e) {
             e.getStackTrace();
         }
-        System.out.println(storages);
+        System.out.println("OUT STORAGE :: \n \n "+storages+" \n \n ");
         return storages;
     }
 
