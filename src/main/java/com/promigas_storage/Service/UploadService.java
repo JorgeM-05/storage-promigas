@@ -103,6 +103,7 @@ public class UploadService {
                                     .setPropCapexCop(convertString(cell));
                             break;
                         case 15:
+                            System.out.println("<<<<<<<<222");
                             storage.getBenefTributariesEntity()
                                     .setBenef1715(validatesTrue(
                                             cell.getStringCellValue()));
@@ -129,13 +130,12 @@ public class UploadService {
                             storage.getCapexEntity().setYear(year[0]);
                             break;
                         case 21:
-                            storage.getCountryEntity().setCod_country(convertString(cell));
-//                            storage.getOpportunityEntity().setCity(convertString(cell));
                             break;
                         case 22:
                             storage.getCapexEntity().setCapexUsd(Double.parseDouble(convertString(cell)));
                             break;
                         case 23:
+
                             storage.getCapexEntity().setCapexCop(Double.parseDouble(convertString(cell)));
                             break;
                         case 24:
@@ -146,7 +146,7 @@ public class UploadService {
                             break;
                         case 25:
                             storage.getEbitdaEntity()
-                                    .setValueCop(Double.parseDouble(convertString(cell)));
+                                .setValueCop(Double.parseDouble(convertString(cell)));
                             break;
                         case 26:
                             storage.getIncomeEntity().setIncomeUsd(Double.parseDouble(convertString(cell)));
@@ -274,37 +274,51 @@ public class UploadService {
                             // indicadores_deuda_usd
                             System.out.println("case 56");
                             break;
-                    // indicadores_deuda_cop
+
                         case 57:
+                            // indicadores_deuda_cop
+                            System.out.println("case 57");
                             break;
-                    // deuda_neta_usd
+
                         case 58:
+                            // deuda_neta_usd
+                            System.out.println("case 58");
                             break;
-                    // deuda_neta_cop
+
                         case 59:
+                            // deuda_neta_cop
+                            System.out.println("case 59");
                             break;
-                    // indicador_ebitda_usd
+
                         case 60:
+                            // indicador_ebitda_usd
+                            System.out.println("case 60");
                             break;
-                    // indicador_ebitda_cop
+
                         case 61:
+                            // indicador_ebitda_cop
+                            System.out.println("case 61");
                             break;
-                    //FFO_usd
+
                         case 62:
+                            //FFO_usd
+                            System.out.println("case 62");
                             break;
-                    //FFO_cop
+
                         case 63:
+                            //FFO_cop
+                            System.out.println("case 63");
                             break;
                         case 64:
-                            System.out.println(">>>>>>>>>>>5");
-                            storage.getOpportunityEntity()
-                                    .setCity(convertString(cell));
-                            System.out.println(">>>>>>>>>>>5");
+                            System.out.println(">>>>>>>>22");
+
                             break;
                         case 65:
+                            System.out.println(">>>>>>>>23");
                             storage.getCountryEntity().setCod_country(convertString(cell));
                             break;
                         case 66:
+                            System.out.println(">>>>>>>>24");
                             storage.getCountryEntity()
                                     .setUrlFlags(convertString(cell));
                             break;
