@@ -48,17 +48,16 @@ public class UploadDataService extends AbstractRepositoryDatabase {
                 if(idSector>0 && idCountry>0 && idTypeContract>0) {
                     idOpportunity = repositoryOpportunity.insertByOpportunitiy(idSector, idCountry, idTypeContract,
                             data.getOpportunityEntity(), connectionInfo);
-                    if(idOpportunity>0)
+                    if(idOpportunity>0) {
                         financialService.setDataFinancial(idOpportunity, data);
-                    operatingService.setDataFinancial(idOpportunity,data);
-
+                        operatingService.setDataFinancial(idOpportunity, data);
+                    }
                 }
             }
             else {
                 repositoryOpportunity.updateOpportunity(idOpportunity,idSector,idCountry,idTypeContract,data.getOpportunityEntity(),connectionInfo);
                 financialService.setDataFinancial(idOpportunity, data);
                 operatingService.setDataFinancial(idOpportunity,data);
-
             }
         }
     }
