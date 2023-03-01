@@ -13,6 +13,13 @@ public class UploadExcelTest {
         storage.getCountryEntity().setCod_country("COL");
         storage.getCountryEntity().setUrlFlags("irlll.....");
 
+        storage.getOpportunityEntity().setCity("Colombia");
+        storage.getOpportunityEntity().setCoordinates("dsdss");
+
+
+        storage.getCapexEntity().setCapexCop(22.2);
+        
+
 
 
 
