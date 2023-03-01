@@ -46,5 +46,6 @@ public class UploadExcelTest {
         storage.getCapexEntity().setCapexCop(22.2);
         storage.getCapexEntity().setCapexCop(22.2);
         storage.getCapexEntity().setYear("2022");
+        return storage;
     }
 }
