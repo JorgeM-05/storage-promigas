@@ -103,6 +103,7 @@ public class UploadService {
                                     .setPropCapexCop(convertString(cell));
                             break;
                         case 15:
+                            System.out.println("<<<<<<<<222");
                             storage.getBenefTributariesEntity()
                                     .setBenef1715(validatesTrue(
                                             cell.getStringCellValue()));
@@ -135,15 +136,18 @@ public class UploadService {
                             storage.getCapexEntity().setCapexUsd(Double.parseDouble(convertString(cell)));
                             break;
                         case 23:
+
                             storage.getCapexEntity().setCapexCop(Double.parseDouble(convertString(cell)));
                             break;
                         case 24:
                             storage.getEbitdaEntity()
                                     .setValueUsd(Double.parseDouble(convertString(cell)));
+                            System.out.println(">>>>>>>>>>>2");
+
                             break;
                         case 25:
                             storage.getEbitdaEntity()
-                                    .setValueCop(Double.parseDouble(convertString(cell)));
+                                .setValueCop(Double.parseDouble(convertString(cell)));
                             break;
                         case 26:
                             storage.getIncomeEntity().setIncomeUsd(Double.parseDouble(convertString(cell)));
@@ -191,7 +195,10 @@ public class UploadService {
                             break;
                         case 39:
                             storage.getTirProjectEntity().setTirprojfigure(Double.parseDouble(convertString(cell)));
+                            System.out.println(">>>>>>>>>>>3");
+
                             break;
+
                     //  tir_project_year
                     //  tir_project_unit
                         case 40:
@@ -244,8 +251,11 @@ public class UploadService {
                                     .setVolumeDistribution(Float.parseFloat(convertString(cell)));
                             break;
                         case 52:
+
                             storage.getDistributionEntity()
                                     .setDistributionUsers(Float.parseFloat(convertString(cell)));
+                            System.out.println(">>>>>>>>>>>3.1");
+
                             break;
                         case 53:
                             storage.getDistributionEntity()
@@ -256,42 +266,60 @@ public class UploadService {
                                     .setDistributionKms(Float.parseFloat(convertString(cell)));
                             break;
                         case 55:
+
                             storage.getDistributionEntity()
                                     .setDistributionPenetration(Float.parseFloat(convertString(cell)));
+                            System.out.println(">>>>>>>>>>>4");
                             break;
-                    // indicadores_deuda_usd
                         case 56:
+                            // indicadores_deuda_usd
+                            System.out.println("case 56");
                             break;
-                    // indicadores_deuda_cop
+
                         case 57:
+                            // indicadores_deuda_cop
+                            System.out.println("case 57");
                             break;
-                    // deuda_neta_usd
+
                         case 58:
+                            // deuda_neta_usd
+                            System.out.println("case 58");
                             break;
-                    // deuda_neta_cop
+
                         case 59:
+                            // deuda_neta_cop
+                            System.out.println("case 59");
                             break;
-                    // indicador_ebitda_usd
+
                         case 60:
+                            // indicador_ebitda_usd
+                            System.out.println("case 60");
                             break;
-                    // indicador_ebitda_cop
+
                         case 61:
+                            // indicador_ebitda_cop
+                            System.out.println("case 61");
                             break;
-                    //FFO_usd
+
                         case 62:
+                            //FFO_usd
+                            System.out.println("case 62");
                             break;
-                    //FFO_cop
+
                         case 63:
+                            //FFO_cop
+                            System.out.println("case 63");
                             break;
                         case 64:
-                            storage.getOpportunityEntity()
-                                    .setCity(convertString(cell));
+                            System.out.println(">>>>>>>>22");
+
                             break;
                         case 65:
-                            storage.getCountryEntity()
-                                    .setCod_country(convertString(cell));
+                            System.out.println(">>>>>>>>23");
+                            storage.getCountryEntity().setCod_country(convertString(cell));
                             break;
                         case 66:
+                            System.out.println(">>>>>>>>24");
                             storage.getCountryEntity()
                                     .setUrlFlags(convertString(cell));
                             break;
@@ -303,7 +331,7 @@ public class UploadService {
         } catch (IOException e) {
             e.getStackTrace();
         }
-        System.out.println(storages);
+        System.out.println("OUT STORAGE :: \n \n "+storages+" \n \n ");
         return storages;
     }
 

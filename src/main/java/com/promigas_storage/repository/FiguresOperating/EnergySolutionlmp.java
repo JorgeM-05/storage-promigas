@@ -40,9 +40,9 @@ public class EnergySolutionlmp extends AbstractRepositoryDatabase implements Ene
             con.setInt(1,idOpportunity);
             con.setString(2,energySolutionEntity.getSolEnergyPowerUnit());
             con.setDouble(3,energySolutionEntity.getSolEnergyPowerFigure());
-            con.setDouble(4,energySolutionEntity.getSolGenerUnit());
+            con.setDouble(4,energySolutionEntity.getSolGenerUnit());// validar dato
             con.setString(2,energySolutionEntity.getSolGenerFigure());
-            con.setDouble(3,energySolutionEntity.getSolDegradation());
+            con.setString(3,energySolutionEntity.getSolDegradation());
             con.setDouble(4,energySolutionEntity.getSolEnergyHourSun());
 
             int affectedRows =con.executeUpdate();

@@ -18,7 +18,6 @@ public class UploadDataService extends AbstractRepositoryDatabase {
     private UploadFinancialService financialService = new UploadFinancialService();
     private UploadOperatingService operatingService = new UploadOperatingService();
 
-
     public void DataService(List<StorageEntity> customersDataFromExcel){
         SecretPort secretPort = new SecretAdapter();
         ConnectionInfo connectionInfo = secretPort.querySecretConnection(ConstantsEnum.SECRET_SQL_SERVER.getValue());
@@ -51,13 +50,15 @@ public class UploadDataService extends AbstractRepositoryDatabase {
                             data.getOpportunityEntity(), connectionInfo);
                     if(idOpportunity>0)
                         financialService.setDataFinancial(idOpportunity, data);
-                        operatingService.setDataFinancial(idOpportunity,data);
+                    operatingService.setDataFinancial(idOpportunity,data);
+
                 }
             }
             else {
                 repositoryOpportunity.updateOpportunity(idOpportunity,idSector,idCountry,idTypeContract,data.getOpportunityEntity(),connectionInfo);
                 financialService.setDataFinancial(idOpportunity, data);
                 operatingService.setDataFinancial(idOpportunity,data);
+
             }
         }
     }
