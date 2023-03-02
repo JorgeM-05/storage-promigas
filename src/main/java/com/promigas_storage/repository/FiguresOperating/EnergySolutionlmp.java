@@ -10,9 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class EnergySolutionlmp extends AbstractRepositoryDatabase implements EnergySolutionRepository {
-
+    Logger logger = Logger.getLogger(EnergySolutionlmp.class.getName());
     private static String QUERY = "";
     private static String INSERT = "insert into dbo.co_energy_solutions values(?,?,?,?,?,?,?)";
     private static String DELETE = "delete from dbo.co_energy_solutions  where id_opportunity = ?";
@@ -40,11 +41,12 @@ public class EnergySolutionlmp extends AbstractRepositoryDatabase implements Ene
             con.setInt(1,idOpportunity);
             con.setString(2,energySolutionEntity.getSolEnergyPowerUnit());
             con.setDouble(3,energySolutionEntity.getSolEnergyPowerFigure());
-            con.setDouble(4,energySolutionEntity.getSolGenerUnit());// validar dato
-            con.setString(2,energySolutionEntity.getSolGenerFigure());
-            con.setString(3,energySolutionEntity.getSolDegradation());
+            con.setString(4,energySolutionEntity.getSolGenerUnit());
+            con.setDouble(2,energySolutionEntity.getSolGenerFigure());
+            con.setDouble(3,energySolutionEntity.getSolDegradation());
             con.setDouble(4,energySolutionEntity.getSolEnergyHourSun());
 
+            // dejame ver la tabla en BD
             int affectedRows =con.executeUpdate();
             if(affectedRows!=0)
                 return true;

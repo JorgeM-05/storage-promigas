@@ -5,11 +5,13 @@ import com.promigas_storage.DTO.enums.ConstantsEnum;
 import com.promigas_storage.entity.SecretAdapter;
 import com.promigas_storage.entity.StorageEntity;
 import com.promigas_storage.repository.*;
+import com.promigas_storage.repository.FiguresOperating.EnergySolutionlmp;
 
-import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Logger;
 
-public class UploadDataService extends AbstractRepositoryDatabase {
+public class UploadDataService   {
+    Logger logger = Logger.getLogger(EnergySolutionlmp.class.getName());
 
     private CountryRepository repositoryCountry = new CountryRepositoryImp();
     private SectorRepository repositorySector = new SectorRepositoryImp();
@@ -18,19 +20,24 @@ public class UploadDataService extends AbstractRepositoryDatabase {
     private UploadFinancialService financialService = new UploadFinancialService();
     private UploadOperatingService operatingService = new UploadOperatingService();
 
-    public void DataService(List<StorageEntity> customersDataFromExcel){
+    public String DataService(List<StorageEntity> customersDataFromExcel){
+        logger.info("inicio de llenado a la base datos :: "+customersDataFromExcel);
         SecretPort secretPort = new SecretAdapter();
         ConnectionInfo connectionInfo = secretPort.querySecretConnection(ConstantsEnum.SECRET_SQL_SERVER.getValue());
 
         for (StorageEntity data: customersDataFromExcel){
             int idCountry = 0;
             if(!data.getCountryEntity().getNameContry().equals("0.0")){
+                logger.info("consultando id de pais :: "+data.getCountryEntity().getNameContry());
                 idCountry = getCountry(data.getCountryEntity().getNameContry(),connectionInfo);
+                logger.info("id pais :: "+idCountry);
             }
             int idSector =0;
             if(data.getSectorEntity().getTypeSector()!=null) {
+                logger.info("consultando id de sector :: "+data.getSectorEntity().getTypeSector());
                 idSector = getSector(data.getSectorEntity().getTypeSector(), connectionInfo);
                 if (idSector == 0) {
+                    logger.info("insertando data sector :: "+data.getSectorEntity().getTypeSector());
                     idSector = repositorySector.insertByType(data.getSectorEntity().getTypeSector(), connectionInfo);
                 }
             }
@@ -48,6 +55,7 @@ public class UploadDataService extends AbstractRepositoryDatabase {
                 if(idSector>0 && idCountry>0 && idTypeContract>0) {
                     idOpportunity = repositoryOpportunity.insertByOpportunitiy(idSector, idCountry, idTypeContract,
                             data.getOpportunityEntity(), connectionInfo);
+                    logger.info("id oportunidad ::" +idOpportunity);
                     if(idOpportunity>0) {
                         financialService.setDataFinancial(idOpportunity, data);
                         operatingService.setDataFinancial(idOpportunity, data);
@@ -55,12 +63,18 @@ public class UploadDataService extends AbstractRepositoryDatabase {
                 }
             }
             else {
+                logger.info("id oportunidad ::" +idOpportunity);
                 repositoryOpportunity.updateOpportunity(idOpportunity,idSector,idCountry,idTypeContract,data.getOpportunityEntity(),connectionInfo);
                 financialService.setDataFinancial(idOpportunity, data);
                 operatingService.setDataFinancial(idOpportunity,data);
             }
         }
+
+
+        return null;
     }
+
+
     public int getCountry(String country, ConnectionInfo connectionInfo){
        return  repositoryCountry.findByCountry(country,connectionInfo);
     }

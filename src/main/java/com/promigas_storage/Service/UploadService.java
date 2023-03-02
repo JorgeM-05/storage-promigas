@@ -1,4 +1,4 @@
-package com.promigas_storage.Service;
+/**package com.promigas_storage.Service;
 
 import com.promigas_storage.entity.*;
 import com.promigas_storage.entity.FiguresFinancial.*;
@@ -23,7 +23,7 @@ public class UploadService {
      * 
      * @param
      * @return List<StorageDto> lista de registros
-     */
+     *
     public List<StorageEntity> getCustomersDataFromExcel(InputStream inputStream) {
         System.out.println(">>>>>>>>>>>");
         List<StorageEntity> storages = new ArrayList<>();
@@ -217,11 +217,11 @@ public class UploadService {
                                     .setSolEnergyPowerFigure(Float.parseFloat(convertString(cell)));
                             break;
                         case 44:
-                            storage.getEnergySolutionEntity().setSolGenerFigure(
-                                    convertString(cell));
+                     //       storage.getEnergySolutionEntity().setSolGenerFigure(
+                     //               convertString(cell));
                             break;
                         case 45:
-                            storage.getEnergySolutionEntity().setSolDegradation(convertString(cell));
+                    //        storage.getEnergySolutionEntity().setSolDegradation(convertString(cell));
                             break;
                         case 46:
                             storage.getEnergySolutionEntity()
@@ -339,7 +339,7 @@ public class UploadService {
      * strings
      * 
      * @return String. Campo convertido a string
-     */
+     *
     public String convertString(Cell cell) {
         if (cell.getCellType().toString().equals("STRING")) {
             return cell.getStringCellValue();
@@ -349,7 +349,7 @@ public class UploadService {
 
     /**
      * Metodo que valida si es true o false
-     */
+     *
 
     public Boolean validatesTrue(String param) {
         return param.equals("True") || param.equals("true") ? true : false;
@@ -395,3 +395,4 @@ public class UploadService {
         return storage;
     }
 }
+*/

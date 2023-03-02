@@ -2,6 +2,7 @@ package com.promigas_storage.repository;
 
 import com.promigas_storage.DTO.ConnectionInfo;
 import com.promigas_storage.entity.OpportunitiesEntity;
+import com.promigas_storage.repository.FiguresOperating.EnergySolutionlmp;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,8 +11,11 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 
 public class OpportunityRepositoryImp extends AbstractRepositoryDatabase implements OpportunitiesRepository{
+
+    Logger logger = Logger.getLogger(OpportunityRepositoryImp.class.getName());
 
     private static String QUERY = "";
 
@@ -47,9 +51,9 @@ public class OpportunityRepositoryImp extends AbstractRepositoryDatabase impleme
             con.setInt(1,idCountry);
             con.setInt(2,idSector);
             con.setInt(3,idcontract);
-            con.setBoolean(4,true);// aqui es un string en BD real
+            con.setString(4,opportunitiesEntity.getTypeProject());
             con.setString(5,opportunitiesEntity.getProjecTitle());
-            con.setDate(6, java.sql.Date.valueOf("2023-12-08"));
+            con.setDate(6, java.sql.Date.valueOf(opportunitiesEntity.getDate()));
             con.setString(7,opportunitiesEntity.getCoordinates());
             con.setString(8,opportunitiesEntity.getDescrip());
             con.setInt(9,opportunitiesEntity.getHorizonOpe());
@@ -59,12 +63,15 @@ public class OpportunityRepositoryImp extends AbstractRepositoryDatabase impleme
             con.setDouble(13,opportunitiesEntity.getTrmFin());
             con.setString(14,opportunitiesEntity.getPropCapexUsd());
             con.setString(15,opportunitiesEntity.getPropCapexCop());
-            con.setBoolean(16,true);// aqui validar que llega
+            con.setBoolean(16,opportunitiesEntity.isFinancialAsset());
             con.setString(17, opportunitiesEntity.getCity());
 
             int affectedRows =con.executeUpdate();
             if(affectedRows!=0) {
+                logger.info("obteniendo id ");
                 id = getID(opportunitiesEntity.getProjecTitle());
+                logger.info("obteniendo id ::: "+id);
+
             }
 
         }catch (Exception e){
@@ -127,6 +134,8 @@ public class OpportunityRepositoryImp extends AbstractRepositoryDatabase impleme
         while (rs.next()){
             if(rs.getString("project_title").toUpperCase().equalsIgnoreCase(opportunity.toUpperCase())){
                 id=rs.getInt("unique_id");
+                logger.info("result :: "+id);
+
             }
         }
         return id;
