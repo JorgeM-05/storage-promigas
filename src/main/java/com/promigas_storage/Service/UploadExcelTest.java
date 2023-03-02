@@ -15,7 +15,6 @@ public class UploadExcelTest {
 
     public List<StorageEntity> testStorages(){
         List<StorageEntity> listStorage = new ArrayList<>();
-        logger.info("agregando 1 ");
         listStorage.add(getStorageOne());
 
         logger.info("result TEST :: \n "+listStorage);
@@ -64,7 +63,6 @@ public class UploadExcelTest {
         benefTributariesEntity.setBenefCej(true);
         benefTributariesEntity.setBenefOthers(false);
         benefTributariesEntity.setBenefLawCrec(true);
-
 
         CapexEntity capexEntity = new CapexEntity();
         capexEntity.setCapexUsd(235);

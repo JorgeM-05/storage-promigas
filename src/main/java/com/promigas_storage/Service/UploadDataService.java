@@ -54,7 +54,7 @@ public class UploadDataService   {
                 }
             }
 
-            /** en esta seccion se consulta */
+            /** en esta seccion se consulta la oportunidad y me retorna id*/
             int idOpportunity = getOpportunity(data.getOpportunityEntity().getProjecTitle(),connectionInfo);
             if(idOpportunity==0 ){
                 if(idSector>0 && idCountry>0 && idTypeContract>0) {
@@ -62,6 +62,7 @@ public class UploadDataService   {
                             data.getOpportunityEntity(), connectionInfo);
                     logger.info("id oportunidad ::" +idOpportunity);
                     if(idOpportunity>0) {
+                        //llenando data de cifras financiera y operativas
                         financialService.setDataFinancial(idOpportunity, data);
                         operatingService.setDataFinancial(idOpportunity, data);
                     }
