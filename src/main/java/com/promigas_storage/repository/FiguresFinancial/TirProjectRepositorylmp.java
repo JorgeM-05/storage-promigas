@@ -7,6 +7,7 @@ import com.promigas_storage.repository.AbstractRepositoryDatabase;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class TirProjectRepositorylmp extends AbstractRepositoryDatabase implemen
     @Override
     public List<Integer> findByTirProject(int idOportunity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id;
         try {
             id= getID(idOportunity);
         } catch(Exception ex){
@@ -37,8 +38,8 @@ public class TirProjectRepositorylmp extends AbstractRepositoryDatabase implemen
             PreparedStatement con = connection.prepareStatement(INSERT);
             con.setInt(1,idOpportunity);
             con.setString(2,tirProjectEntity.getYear());
-//            con.setDouble(3,tirProjectEntity.getTirprojectunit());
-//            con.setDouble(4,tirProjectEntity.getTirprojfigure());
+            con.setDouble(3,tirProjectEntity.getTirprojfigure());
+            con.setString(4,tirProjectEntity.getTirprojectunit());
 
             int affectedRows =con.executeUpdate();
             if(affectedRows!=0)
@@ -56,7 +57,7 @@ public class TirProjectRepositorylmp extends AbstractRepositoryDatabase implemen
     }
 
     public List<Integer> getID(int idOportunity) throws SQLException {
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id= new ArrayList<>();
         QUERY = "select * from dbo.cf_tir_project where id_opportunity = "+idOportunity;
         PreparedStatement con = connection.prepareStatement(QUERY);
         ResultSet rs = con.executeQuery();

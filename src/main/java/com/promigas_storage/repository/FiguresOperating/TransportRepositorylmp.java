@@ -7,6 +7,7 @@ import com.promigas_storage.repository.AbstractRepositoryDatabase;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class TransportRepositorylmp extends AbstractRepositoryDatabase implement
     @Override
     public List<Integer> findByTransport(int idOportunity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id;
         try {
             id= getID(idOportunity);
         } catch(Exception ex){
@@ -42,7 +43,7 @@ public class TransportRepositorylmp extends AbstractRepositoryDatabase implement
             con.setDouble(2,transportEntity.getTransportCapacityMax());
             con.setDouble(3,transportEntity.getTransportCapacityHired());
             con.setDouble(4,transportEntity.getTransportVolumen());
-            con.setDouble(4,transportEntity.getTransportLengthpipeline());
+            con.setDouble(5,transportEntity.getTransportLengthpipeline());
 
             int affectedRows =con.executeUpdate();
             if(affectedRows!=0)
@@ -74,7 +75,7 @@ public class TransportRepositorylmp extends AbstractRepositoryDatabase implement
     }
 
     public List<Integer> getID(int idOportunity) throws SQLException {
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id= new ArrayList<>();
         QUERY = "select * from dbo.co_transport where id_opportunity = "+idOportunity;
         PreparedStatement con = connection.prepareStatement(QUERY);
         ResultSet rs = con.executeQuery();

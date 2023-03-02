@@ -8,6 +8,7 @@ import com.promigas_storage.repository.AbstractRepositoryDatabase;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
@@ -22,7 +23,7 @@ public class EnergySolutionlmp extends AbstractRepositoryDatabase implements Ene
     @Override
     public List<Integer> findByEnergySolution(int idOportunity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id;
         try {
             id= getID(idOportunity);
         } catch(Exception ex){
@@ -42,9 +43,9 @@ public class EnergySolutionlmp extends AbstractRepositoryDatabase implements Ene
             con.setString(2,energySolutionEntity.getSolEnergyPowerUnit());
             con.setDouble(3,energySolutionEntity.getSolEnergyPowerFigure());
             con.setString(4,energySolutionEntity.getSolGenerUnit());
-            con.setDouble(2,energySolutionEntity.getSolGenerFigure());
-            con.setDouble(3,energySolutionEntity.getSolDegradation());
-            con.setDouble(4,energySolutionEntity.getSolEnergyHourSun());
+            con.setDouble(5,energySolutionEntity.getSolGenerFigure());
+            con.setDouble(6,energySolutionEntity.getSolDegradation());
+            con.setDouble(7,energySolutionEntity.getSolEnergyHourSun());
 
             // dejame ver la tabla en BD
             int affectedRows =con.executeUpdate();
@@ -77,7 +78,7 @@ public class EnergySolutionlmp extends AbstractRepositoryDatabase implements Ene
     }
 
     public List<Integer> getID(int idOportunity) throws SQLException {
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id= new ArrayList<>();
         QUERY = "select * from dbo.co_energy_solutions where id_opportunity = "+idOportunity;
         PreparedStatement con = connection.prepareStatement(QUERY);
         ResultSet rs = con.executeQuery();

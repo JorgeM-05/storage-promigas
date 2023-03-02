@@ -25,20 +25,16 @@ public class UploadExcelTest {
 
     public StorageEntity getStorageOne(){
         StorageEntity storage = new StorageEntity();
-        logger.info("TEST 1 ini");
         CountryEntity countryEntity = new CountryEntity();
 
         countryEntity.setCod_country("Ec");
-        System.out.println("<<<<1");
         countryEntity.setUrlFlags("https://countryflagsapi.com/png/ec");
         countryEntity.setNameContry("Ecuador");
 
-        System.out.println("<<<<2");
         OpportunitiesEntity opportunities = new OpportunitiesEntity();
         opportunities.setCity("Machala");
         opportunities.setCoordinates("-1.356100009620227, -78.61881109829805");
 
-        System.out.println("<<<<3");
         SectorEntity sectorEntity = new SectorEntity();
         sectorEntity.setTypeSector("eolico");
         sectorEntity.setUnique_id(5);
@@ -62,27 +58,19 @@ public class UploadExcelTest {
         opportunities.setPropCapexUsd(String.valueOf(58));
         opportunities.setPropCapexCop(String.valueOf(76));
         opportunities.setFinancialAsset(true);
-        logger.info("<<<<1>>>>>>>> "+opportunities);
-
 
         BenefTributariesEntity benefTributariesEntity = new BenefTributariesEntity();
-        logger.info("<<<<1");
         benefTributariesEntity.setBenef1715(true);
         benefTributariesEntity.setBenefCej(true);
         benefTributariesEntity.setBenefOthers(false);
-        logger.info("<<<<2");
         benefTributariesEntity.setBenefLawCrec(true);
 
 
-
-        System.out.println("<<<5");
-
         CapexEntity capexEntity = new CapexEntity();
-        capexEntity.setCapexCop(234);
+        capexEntity.setCapexUsd(235);
         capexEntity.setCapexCop(235);
         capexEntity.setYear("2019");
 
-        System.out.println("<<<6");
 
         EbitdaEntity ebitdaEntity = new EbitdaEntity();
        ebitdaEntity.setValueUsd(234.6);
@@ -98,7 +86,6 @@ public class UploadExcelTest {
         fclEntity.setYear("2026");
         fclEntity.setFclUsd(1626.2);
         fclEntity.setFclCop(343.5);
-        logger.info("<<<<8");
         FclShareholderEntity fclShareholderEntity = new FclShareholderEntity();
         fclShareholderEntity.setYear("2022");
         fclShareholderEntity.setShareholderUsd(247.4);

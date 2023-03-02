@@ -20,7 +20,12 @@ public class UploadFinancialService {
     private TarifRepository tarifRepository = new TarifRepositorylmp();
     private TirProjectRepository tirProjectRepository = new TirProjectRepositorylmp();
     private UtilityRepository utilityRepository = new UtilityRepositorylmp();
-    
+
+    /** 1. se consulta si la data existe en BD
+     * si existe se debe eliminar para hacer un registro nuevo
+     * sino existe se debe insertar los campos
+     * la llave es el id de la oportunidad
+     * */
     public void setDataFinancial(int idOportunity, StorageEntity data){
         SecretPort secretPort = new SecretAdapter();
         ConnectionInfo connectionInfo = secretPort.querySecretConnection(ConstantsEnum.SECRET_SQL_SERVER.getValue());

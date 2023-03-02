@@ -34,8 +34,6 @@ public class Function {
                 UploadExcelTest test = new UploadExcelTest();
                 //uploadService.getCustomersDataFromExcel(document);
                // uploadData.DataService(uploadService.getCustomersDataFromExcel(document));
-                logger.info("leyendo excel :: "+filename);
-
                 List<StorageEntity> storage = test.testStorages();
                 logger.info("Result:: \n "+storage+"\n");
                 uploadDataService.DataService(storage);

@@ -30,6 +30,10 @@ public class UploadDataService   {
             if(!data.getCountryEntity().getNameContry().equals("0.0")){
                 logger.info("consultando id de pais :: "+data.getCountryEntity().getNameContry());
                 idCountry = getCountry(data.getCountryEntity().getNameContry(),connectionInfo);
+                if(idCountry==0){
+                    logger.info("insertando data pais :: "+data.getCountryEntity());
+                    idCountry = repositoryCountry.insertCountry(data.getCountryEntity(),connectionInfo);
+                }
                 logger.info("id pais :: "+idCountry);
             }
             int idSector =0;
@@ -37,7 +41,7 @@ public class UploadDataService   {
                 logger.info("consultando id de sector :: "+data.getSectorEntity().getTypeSector());
                 idSector = getSector(data.getSectorEntity().getTypeSector(), connectionInfo);
                 if (idSector == 0) {
-                    logger.info("insertando data sector :: "+data.getSectorEntity().getTypeSector());
+                    logger.info("insertando data sector :: "+data.getSectorEntity());
                     idSector = repositorySector.insertByType(data.getSectorEntity().getTypeSector(), connectionInfo);
                 }
             }
@@ -50,6 +54,7 @@ public class UploadDataService   {
                 }
             }
 
+            /** en esta seccion se consulta */
             int idOpportunity = getOpportunity(data.getOpportunityEntity().getProjecTitle(),connectionInfo);
             if(idOpportunity==0 ){
                 if(idSector>0 && idCountry>0 && idTypeContract>0) {

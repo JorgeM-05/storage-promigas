@@ -7,6 +7,7 @@ import com.promigas_storage.repository.AbstractRepositoryDatabase;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class UtilityRepositorylmp extends AbstractRepositoryDatabase implements 
     @Override
     public List<Integer> findByUtility(int idOportunity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id;
         try {
             id= getID(idOportunity);
         } catch(Exception ex){
@@ -69,7 +70,7 @@ public class UtilityRepositorylmp extends AbstractRepositoryDatabase implements 
         return false;    }
 
     public List<Integer> getID(int idOportunity) throws SQLException {
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id= new ArrayList<>();
         QUERY = "select * from dbo.cf_utility_net where id_opportunity = "+idOportunity;
         PreparedStatement con = connection.prepareStatement(QUERY);
         ResultSet rs = con.executeQuery();

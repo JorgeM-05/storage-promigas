@@ -7,6 +7,7 @@ import com.promigas_storage.repository.AbstractRepositoryDatabase;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class DividensRepositorylmp extends AbstractRepositoryDatabase implements
     @Override
     public List<Integer> findByDividens(int idOportunity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id;
         try {
             id= getID(idOportunity);
         } catch(Exception ex){
@@ -71,11 +72,10 @@ public class DividensRepositorylmp extends AbstractRepositoryDatabase implements
     }
 
     public List<Integer> getID(int idOportunity) throws SQLException {
-        List<Integer> id= Collections.singletonList(0);
-        QUERY = "select * from dbo.cf_dividens where id_opportunity = "+idOportunity;
+        List<Integer> id= new ArrayList<>();
+        QUERY = "select * from dbo.cf_dividends where id_opportunity = "+idOportunity;
         PreparedStatement con = connection.prepareStatement(QUERY);
         ResultSet rs = con.executeQuery();
-
         while (rs.next()){
             id.add(rs.getInt("unique_id"));
         }

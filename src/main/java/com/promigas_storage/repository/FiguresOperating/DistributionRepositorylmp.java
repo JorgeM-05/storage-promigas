@@ -8,6 +8,7 @@ import com.promigas_storage.repository.AbstractRepositoryDatabase;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class DistributionRepositorylmp extends AbstractRepositoryDatabase implem
     @Override
     public List<Integer> findByDistribution(int idOportunity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id;
         try {
             id= getID(idOportunity);
         } catch(Exception ex){
@@ -41,8 +42,8 @@ public class DistributionRepositorylmp extends AbstractRepositoryDatabase implem
             con.setDouble(2, distributionEntity.getVolumeDistribution());
             con.setDouble(3, distributionEntity.getDistriPeriod());
             con.setDouble(4, distributionEntity.getDistributionKms());
-            con.setDouble(3, distributionEntity.getDistributionUsers());
-            con.setDouble(4, distributionEntity.getDistributionPenetration());
+            con.setDouble(5, distributionEntity.getDistributionUsers());
+            con.setDouble(6, distributionEntity.getDistributionPenetration());
 
             int affectedRows =con.executeUpdate();
             if(affectedRows!=0)
@@ -74,7 +75,7 @@ public class DistributionRepositorylmp extends AbstractRepositoryDatabase implem
     }
 
     public List<Integer> getID(int idOportunity) throws SQLException {
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id = new ArrayList<>();
         QUERY = "select * from dbo.co_distribution where id_opportunity = "+idOportunity;
         PreparedStatement con = connection.prepareStatement(QUERY);
         ResultSet rs = con.executeQuery();

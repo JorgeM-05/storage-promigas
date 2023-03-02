@@ -7,5 +7,5 @@ import com.promigas_storage.entity.CountryEntity;
 public interface CountryRepository {
 
     public Integer findByCountry(String country, ConnectionInfo connectionInfo);
-    public boolean insertCountry(CountryEntity countryEntity, ConnectionInfo connectionInfo);
+    public Integer insertCountry(CountryEntity countryEntity, ConnectionInfo connectionInfo);
 }

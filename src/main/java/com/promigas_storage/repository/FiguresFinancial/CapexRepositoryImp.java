@@ -20,7 +20,7 @@ public class CapexRepositoryImp extends AbstractRepositoryDatabase implements Ca
     @Override
     public List<Integer> findByCapex(int idOportunity, ConnectionInfo connectionInfo) {
         getConnectionSQLServer(connectionInfo);
-        List<Integer> id= Collections.singletonList(0);
+        List<Integer> id= new ArrayList<>();
         try {
             id= getID(idOportunity);
         } catch(Exception ex){
